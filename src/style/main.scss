@@ -38,7 +38,7 @@ button {
   background-color: white;
   line-height: 1.5;
   margin: 0;
-  padding: 0;
+  // padding: 0;
 }
 
 textarea:hover,
@@ -67,6 +67,11 @@ button:hover {
 #root {
   position: relative;
 }
+#detail{
+  position: relative;
+  padding-top: 7%;
+}
+
 
 .optimize {
   background-color: rgb(161, 161, 161);
@@ -75,4 +80,18 @@ button:hover {
 
 button {
   text-transform: uppercase;
+}
+
+.popup{
+  position: fixed;
+  right: 10%;
+  z-index: 9;
+  &__help{
+    bottom: 40%;
+
+    .popup-image__help{
+      background-image: url('../assets/img/call.png');
+      background-color: transparent;
+    }
+  }
 }

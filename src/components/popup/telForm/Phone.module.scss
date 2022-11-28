@@ -1,0 +1,32 @@
+@import '../../../style/main.scss';
+.form{
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  height: 100%;
+  input{
+    border-radius: 0;
+    padding: 0.5rem 0.7rem;
+    font-size: 12px;
+  }
+  button{
+    display: flex;
+    width: 25%;
+    min-width: 10%;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    border-radius: 0;
+    padding: 1px;
+    @include bg;
+    background-color: transparent;
+    background-color: rgb(168, 229, 245);
+    background-image: url('../../../assets/img/complete.svg');
+    cursor: pointer;
+    &:hover{
+      background-color: rgb(136, 199, 214);
+    }
+  }
+}
