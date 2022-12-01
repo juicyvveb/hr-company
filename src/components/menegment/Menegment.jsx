@@ -1,9 +1,12 @@
 import React from 'react';
 import s from './Menegment.module.scss';
-import { Form } from '../form/Form';
+import { Form_Request } from '../form/Form';
+import { useNavigation } from 'react-router';
+import { Spinner } from '../spinner/Spinner';
 
 
 export const Menegment = () => {
+  const nav = useNavigation()
   return (
     <div className={`${s.content} ${s.wrap} wrap`}>
 
@@ -42,9 +45,12 @@ export const Menegment = () => {
       </div>
       <div className={`${s.labels} ${s['content-part']} ${s['content-part__2']}`}>
         <div className={s.form}>
-          <Form />
+          <Form_Request />
         </div>
       </div>
+      {
+        nav.state == 'submitting' && <Spinner />
+      }
     </div>
 
   )

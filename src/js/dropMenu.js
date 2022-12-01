@@ -8,7 +8,7 @@ export const drop_menu = (elem_selector, toggle_selector) => {
                 document.removeEventListener('click', close)
             }
 
-            e.preventDefault();
+            // e.preventDefault();
             [...drop_button]
                 .filter(el => el.classList.contains(toggle_selector) && el != this)
                 .forEach(el => el.classList.remove(toggle_selector))

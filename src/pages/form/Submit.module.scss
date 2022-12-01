@@ -1,0 +1,36 @@
+@import '../../style/main.scss';
+.submission {
+  text-align: center;
+  min-height: 50vh;
+  padding-top: 40%;
+  padding-bottom: 40%;
+
+  h1 {
+    line-height: 1.2;
+    font-weight: 400;
+  }
+
+
+}
+
+.name {
+  font-weight: bold;
+}
+
+.email {
+  font-style: italic;
+  font-size: 24px;
+}
+
+@media (min-width: $laptop) {
+  .submission {
+    padding-top: 30%;
+    padding-bottom: 30%;
+  }
+}
+@media (min-width: $desktop) {
+  .submission {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+}

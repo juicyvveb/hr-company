@@ -33,7 +33,12 @@ export const Header = ({ nav }) => {
               <ul>
                 {
                   [...Array(5)].map((item, k) => (
-                    <li key={k}><a href="#">{`${el}_${k + 1}`}</a></li>
+                    <li key={k}>
+                      <Link to={`/${el}/${k + 1}`} onClick={(e) => e.stopPropagation()}>
+                        {`${el}_${k + 1}`}
+                      </Link>
+                      {/* <a href="#">{`${el}_${k + 1}`}</a> */}
+                    </li>
                   ))
                 }
               </ul>

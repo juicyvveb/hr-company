@@ -33,7 +33,7 @@ export const Slider = () => {
     window.onresize = () => {
       setSlides_preview(size_detect());
     }
-  }, [slides_preview])
+  })
 
 
   function SliderItem({ src, target }) {

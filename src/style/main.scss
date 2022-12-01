@@ -71,6 +71,11 @@ button:hover {
   position: relative;
   padding-top: 7%;
 }
+@media (min-width: $desktop) {
+  #detail{
+    padding-top: 3%;
+  }
+}
 
 
 .optimize {
