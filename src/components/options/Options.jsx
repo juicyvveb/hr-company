@@ -19,7 +19,9 @@ import business_payroll from '../../assets/img/business_payroll.jpg';
 import business_benefits from '../../assets/img/business-benefits.jpg';
 import business_mobile from '../../assets/img/business_mobile.jpg';
 import business_time from '../../assets/img/business_mobile.jpg';
-
+import { useInView } from "react-intersection-observer";
+import { animation_list } from "./gsap_animation";
+import { animation_image } from "./gsap_animation";
 
 
 export const Options = () => {
@@ -35,6 +37,18 @@ export const Options = () => {
   };
   const [bild, setBild] = useState(true);
   const nodeRef = useRef(null);
+  // const img_block= useRef(null)
+  const { ref: title, inView: titleInView, entry } = useInView({})
+  let [shown, setShown] = useState(false)
+
+  useEffect(() => {
+    if (titleInView && !shown) {
+      animation_list('.listItem');
+      animation_image(nodeRef.current)
+      setShown(true)
+    } 
+  })
+
 
   // UI часть компонента
   function Build() {
@@ -55,8 +69,8 @@ export const Options = () => {
   }
 
 
-  function set_animation_and_theme(propose){
-    if(propose == theme){
+  function set_animation_and_theme(propose) {
+    if (propose == theme) {
       return
     }
     setBild(false);
@@ -70,12 +84,14 @@ export const Options = () => {
   return (
     <div className={`${s.content} ${s.wrap} wrap`}>
       <p className={`${s['content-text']}`}>people operations platform</p>
-      <h2 className={`${s['content-title']}`}>Swingvy makes it easy to onboard, play, insure and support.</h2>
+      <h2 ref={title} className={`${s['content-title']}`}>Swingvy makes it easy to onboard, play, insure and support.</h2>
       <ul className={s.list}>
         {
           Object.keys(map).map((el, i) => (
             <li
-              onClick={() => {  set_animation_and_theme(el)}}
+              className="listItem"
+              
+              onClick={() => { set_animation_and_theme(el) }}
               key={i}
               style={{ backgroundColor: `${map[el][1]}` }}>
               <span style={{ backgroundImage: `url(${map[el][0]})` }}></span>
@@ -95,13 +111,13 @@ export const Options = () => {
         <div
           ref={nodeRef}
           className={s.bild}
-          style={{ backgroundColor: `${map[theme][1]}` }}>
+          style={{ backgroundColor: `${map[theme][1]}`}}>
           <Build />
         </div>
       </CSSTransition>
 
-      
-      
+
+
       <div className={s.button} onClick={() => { setBild(!bild) }}>
         <Button >Learn more</Button>
       </div>
