@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import s from './Bubbles.module.scss';
 import { bubbles_move } from "../../js/bubbles";
 
 
-export const Bubbles = ({className}) => {
-  const [play, setPlay] = useState(true);
-  let move = bubbles_move;
+export const Bubbles = ({ className }) => {
   useEffect(() => {
-    move();
-    return () => {
-      move = () => false;
-    }
-  }, [move])
+    bubbles_move()
+  }, [])
 
   return (
     <div className={`${s['bubbles']} ${className}`}>

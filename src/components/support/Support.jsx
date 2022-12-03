@@ -13,10 +13,11 @@ import comp_5 from '../../assets/img/comp_5.png';
 export const Support = () => {
   const companies = [comp_1, comp_2, comp_3, comp_4, comp_5];
 
-
   useEffect(() => {
-    optimize(`.${s['companies-item']}`, 'optimize')
+    optimize(`.${s['companies-item']}`, 'optimize') //для оптимизации фото (пока не прогружены - серый блок)
   }, [])
+
+
   return (
     <div className={`${s.content} ${s.wrap} wrap`}>
       <p className={`${s['content-text']}`}>Meet our Customers</p>

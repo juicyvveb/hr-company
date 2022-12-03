@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 export const animation_list = (target) => {
-    let tl = gsap.timeline({delay: .2});
+    let tl = gsap.timeline({ delay: .2 });
     tl.fromTo(target, {
         x: 0,
         y: -50,
@@ -20,6 +20,7 @@ export const animation_list = (target) => {
 }
 
 
+//картинка будет двигаться только на desktop
 export const animation_image = (target) => {
     let scrollWidth = Math.max(
         document.body.scrollWidth, document.documentElement.scrollWidth,
@@ -34,7 +35,6 @@ export const animation_image = (target) => {
             delay: .1, duration: 1
         })
     }
-
 }
 
 

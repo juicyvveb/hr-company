@@ -3,7 +3,6 @@ import { CSSTransition } from "react-transition-group";
 import Burger from "../burger/Burger";
 import s from './Sidebar.module.scss';
 import './appear_animation.scss';
-import { Link as SidebarLink } from '../links/Link';
 import { Button } from "../button/Button";
 import { Logo } from "../logo/Logo";
 import { Link } from "react-router-dom";
@@ -11,8 +10,8 @@ import { drop_menu } from "../../js/dropMenu";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = ({ nav }) => {
-  const [sidebar, setSidebar] = useState(false);
-  const nodeRef = useRef(null);
+  const [sidebar, setSidebar] = useState(false); //скрыт ли сайдбар, как условие для CCSTransition
+  const nodeRef = useRef(null); //для CCSTransition
 
   useEffect(() => {
     drop_menu(s.dropdownLink, `${s['dropdownItem__active']}`);
@@ -44,7 +43,8 @@ export const Sidebar = ({ nav }) => {
             />
             {
               nav.map((el, i) => (
-                <li key={i} className={`${s.dropdownLink} ${s.link}`} >
+                // элемент меню с выпадающим списком
+                <li key={i} className={`${s.dropdownLink} ${s.link}`} > 
                   <a
                     className={s['dropdownLink-item']}
                   >
@@ -69,10 +69,12 @@ export const Sidebar = ({ nav }) => {
                 </li>
               ))
             }
+            {/* обычный элемент меню */}
             <li className={s.link} onClick={() => setSidebar(false)}><Link to='pricing'>pricing</Link></li>
             <li className={s.link} onClick={() => setSidebar(false)}><Link to='company'>company</Link></li>
           </ul>
 
+            {/* дополнительные кнопки-ссылки */}
           <div className={`${s['sidebar-subBlock']}`}>
             <div className={`${s['sidebar-subBlock--button']} ${s['sidebar-subBlock--button__signIn']}`}>
               <Link to={'/login'}>

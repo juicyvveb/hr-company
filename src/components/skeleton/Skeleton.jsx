@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './skeleton.scss';
 import { size_detect } from '../slider/size_detect';
@@ -8,7 +8,6 @@ import React from 'react';
 export const Layout = () => {
   return (
     <div className="wrapper wrap">
-
       <div className="section section__header">
         <Skeleton width={50} circle={true} height={50} className="logo"/>
         <div className="header-menu">
@@ -18,11 +17,9 @@ export const Layout = () => {
         </div>
       </div>
 
-
       <div className="section section__main">
           <Skeleton className="block" width={'100%'} height="100%"/>
       </div>
-
 
       <div className="section section__info">
         <Skeleton width={250} />

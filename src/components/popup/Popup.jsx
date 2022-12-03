@@ -11,9 +11,11 @@ export const Popup = ({ msg, btn, show, close }) => {
   const [approved, setApproved] = useState(false);
   const [visible, setVisible] = useState(true);
 
+
+  //имитация обработки запроса и изменение состояние кнопки
   function approveCall() {
-    setApproved(true); 
-    setRequest(false);
+    setApproved(true); //кнопка ПРИНЯТО
+    setRequest(false); 
     setTimeout(() => {
       setVisible(false)
     }, 500)
@@ -44,16 +46,16 @@ export const Popup = ({ msg, btn, show, close }) => {
               </div>)
               : request
                 ? (<div className={s.form}>
+                  {/* кнопка с input type='mob', для отправки запроса  */}
                   <Phone complete={() => { approveCall() }} />
                 </div>)
                 : !request && !approved
                   ? (<div className={s.btn} onClick={() => setRequest(true)}>
-                    <Button >{btn}</Button>
+                    {/* изначальная кнопка, переданная в props  */}
+                    <Button >{btn}</Button> 
                   </div>) : ''
           }
         </div>
-
-
       </div>
     </CSSTransition>
   )

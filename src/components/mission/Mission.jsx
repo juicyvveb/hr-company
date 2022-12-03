@@ -1,14 +1,11 @@
 import React from 'react';
 import s from './Mission.module.scss';
 
-
 import invest_1 from '../../assets/img/invest_1.png';
 import invest_2 from '../../assets/img/invest_2.png';
 import invest_3 from '../../assets/img/invest_3.png';
 import invest_4 from '../../assets/img/invest_4.png';
 import invest_5 from '../../assets/img/invest_5.png';
-import invest_6 from '../../assets/img/invest_6.png';
-
 
 export const Mission = () => {
   const companies = [invest_1, invest_2, invest_3, invest_4, invest_5];
@@ -43,7 +40,6 @@ export const Mission = () => {
           }
         </ul>
       </div>
-
     </div>
   )
 }

@@ -9,6 +9,7 @@ export const Phone = ({complete}) => {
   })
 
   function approve(){
+    //запрос принят после ввода номера спустя 600ms
     setTimeout(() => {
       complete()
     }, 600)

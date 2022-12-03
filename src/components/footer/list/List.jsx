@@ -15,6 +15,5 @@ export const List = ({ head, items }) => {
         }
       </ul>
     </div>
-
   )
 }

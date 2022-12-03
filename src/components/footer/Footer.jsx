@@ -1,15 +1,17 @@
 import React from 'react';
 import s from './Footer.module.scss';
+import { List } from './list/List';
+import { Select } from '../select/Select';
 import { Logo } from '../logo/Logo';
+
+//icons
 import tg from '../../assets/img/tg.png';
 import inst from '../../assets/img/inst.png';
 import gh from '../../assets/img/gh.png';
 import link from '../../assets/img/link.png';
-import { List } from './list/List';
-import { Select } from '../select/Select';
+
 
 export const Footer = () => {
-  const social = 'tg inst gh link'
   const imgs = {
     tg,
     inst,
@@ -17,10 +19,13 @@ export const Footer = () => {
     link
   }
 
-
   return (
     <div className={`${s.content} ${s.wrap} wrap`}>
+
+      {/* first block */}
       <div className={`${s.block} ${s['block_1']}`}>
+
+
         <div className={s.withLogo}>
           <div className={`${s['withLogo-logo']}`}>
             <Logo />
@@ -36,6 +41,8 @@ export const Footer = () => {
             <div></div>
           </div>
         </div>
+
+
         <div className={s.lists}>
           <div className={`${s['lists-products']}`}>
             <List head={'Products'} items={'HRHub Leave Time claims payroll benefits mobile'} />
@@ -63,12 +70,11 @@ export const Footer = () => {
             <li><a href="">partnership@swingvy.com</a></li>
           </ul>
         </div>
-
         <div className={`${s.social}`}>
           <h4 className={s.title}>Swingvy © 2020</h4>
           <ul>
             {
-              social.split(' ').map((el, i) => (
+              Object.keys(imgs).map((el, i) => (
                 <li key={i}>
                   <a href="">
                     <img src={imgs[`${el}`]} alt={el} />
@@ -79,8 +85,6 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
-
-
     </div>
 
   )

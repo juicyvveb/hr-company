@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import s from './Link.module.scss';
 
 export const Link = ({address, children, onClick, className}) => {
-
-  
   return (
     <NavLink
       to={address}

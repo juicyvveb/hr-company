@@ -9,7 +9,6 @@ export const Menegment = () => {
   const nav = useNavigation()
   return (
     <div className={`${s.content} ${s.wrap} wrap`}>
-
       <div className={`${s['content-part']} ${s['content-part__1']}`}>
         <p className={`${s['content-text']}`}>People matter, not paper</p>
         <h2 className={`${s['content-title']}`}>Simplify HR management and payroll with Swingvy.</h2>

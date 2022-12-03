@@ -4,7 +4,10 @@ import { optimize } from "../../js/optimizePhoto";
 import { Button } from '../button/Button';
 import { CSSTransition } from "react-transition-group";
 import './block_animate.scss';
-//photos
+import { useInView } from "react-intersection-observer";
+import { animation_list, animation_image} from "./gsap_animation";
+
+//photos/icons
 import hRHub from '../../assets/img/hRHub.svg';
 import leave from '../../assets/img/leave.svg';
 import claims from '../../assets/img/claims.svg';
@@ -19,9 +22,7 @@ import business_payroll from '../../assets/img/business_payroll.jpg';
 import business_benefits from '../../assets/img/business-benefits.jpg';
 import business_mobile from '../../assets/img/business_mobile.jpg';
 import business_time from '../../assets/img/business_mobile.jpg';
-import { useInView } from "react-intersection-observer";
-import { animation_list } from "./gsap_animation";
-import { animation_image } from "./gsap_animation";
+
 
 
 export const Options = () => {
@@ -36,21 +37,23 @@ export const Options = () => {
     benefits: [benefits, '#F3E5F5', business_benefits],
   };
   const [bild, setBild] = useState(true);
-  const nodeRef = useRef(null);
-  // const img_block= useRef(null)
+  const bildRef = useRef(null);
   const { ref: title, inView: titleInView, entry } = useInView({})
+
+  //shown - счетчик - для того, чтобы показывалось только один раз
   let [shown, setShown] = useState(false)
 
   useEffect(() => {
     if (titleInView && !shown) {
       animation_list('.listItem');
-      animation_image(nodeRef.current)
+      animation_image(bildRef.current)
       setShown(true)
     } 
   })
 
 
   // UI часть компонента
+  //класс optimize для того, чтобы пока картинки грузятся были заглушки
   function Build() {
     useEffect(() => {
       optimize(`.${s['bild-image']}`, 'optimize')
@@ -69,6 +72,7 @@ export const Options = () => {
   }
 
 
+  //смена картинки в блоке + запуск анимации CCSTransition при bild == true
   function set_animation_and_theme(propose) {
     if (propose == theme) {
       return
@@ -90,7 +94,6 @@ export const Options = () => {
           Object.keys(map).map((el, i) => (
             <li
               className="listItem"
-              
               onClick={() => { set_animation_and_theme(el) }}
               key={i}
               style={{ backgroundColor: `${map[el][1]}` }}>
@@ -105,18 +108,16 @@ export const Options = () => {
         in={bild}
         timeout={1}
         classNames="bild"
-        nodeRef={nodeRef}
+        nodeRef={bildRef}
         mountOnEnter={true}
       >
         <div
-          ref={nodeRef}
+          ref={bildRef}
           className={s.bild}
           style={{ backgroundColor: `${map[theme][1]}`}}>
           <Build />
         </div>
       </CSSTransition>
-
-
 
       <div className={s.button} onClick={() => { setBild(!bild) }}>
         <Button >Learn more</Button>

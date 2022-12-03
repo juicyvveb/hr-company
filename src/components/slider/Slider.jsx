@@ -21,7 +21,7 @@ import slide_6 from '../../assets/img/slide_6.png';
 
 
 export const Slider = () => {
-  const [slides_preview, setSlides_preview] = useState(2);
+  const [slides_preview, setSlides_preview] = useState(2); //количество отображаемых слайдов
   const slides = [
     slide_0, slide_1, slide_2, slide_3, slide_4, slide_5, slide_6
   ]
@@ -29,7 +29,7 @@ export const Slider = () => {
 
   useEffect(() => {
     optimize(`.${s['slide-img']}`, 'optimize');
-    setSlides_preview(size_detect());
+    setSlides_preview(size_detect()); //количество отображаемых слайдов меняется, в зависимости от разрешения экрана
     window.onresize = () => {
       setSlides_preview(size_detect());
     }
