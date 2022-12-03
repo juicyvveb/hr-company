@@ -19,7 +19,7 @@
     flex-grow: 2;
     display: flex;
     margin-left: 5%;
-    display: none;
+    // display: none;
     flex-wrap: wrap;
     justify-content: space-between;
 
@@ -73,7 +73,10 @@
     }
   }
 }
-
+.activeLink{
+  color: rgb(185, 53, 53) !important;
+  font-weight: bold !important;
+}
 
 .dropdownItem {
   position: relative;
@@ -99,12 +102,12 @@
     left: 0;
     background-color: white;
     z-index: 0;
-    width: 130%;
+    width: 130px;
 
     li {
-      padding: 2% 4%;
+      padding: 6% 6%;
       border: 1px solid black;
-
+      border-top: none;
       a {
         font-size: 12px;
         text-transform: uppercase;

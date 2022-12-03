@@ -28,9 +28,6 @@ export const Submit = () => {
 
 
   return (
-    // <>
-      
-    // </>
     <div className={`${s.submission} wrap`}>
       <h1>
         <span className={s.name}>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Burger from "../burger/Burger";
 import s from './Sidebar.module.scss';
@@ -7,10 +7,16 @@ import { Link as SidebarLink } from '../links/Link';
 import { Button } from "../button/Button";
 import { Logo } from "../logo/Logo";
 import { Link } from "react-router-dom";
+import { drop_menu } from "../../js/dropMenu";
+import { NavLink } from "react-router-dom";
 
 export const Sidebar = ({ nav }) => {
   const [sidebar, setSidebar] = useState(false);
   const nodeRef = useRef(null);
+
+  useEffect(() => {
+    drop_menu(s.dropdownLink, `${s['dropdownItem__active']}`);
+  })
 
   return (
     <CSSTransition
@@ -30,24 +36,41 @@ export const Sidebar = ({ nav }) => {
             <Logo />
           </div>
           <ul className={`${s['sidebar-nav']}`}
-            onClick={(e) => { e.stopPropagation() }}
+              onClick={(e) => { e.stopPropagation() }}
           >
             <Burger
               open={sidebar}
-              clickBurger={() => { setSidebar(!sidebar) }}
+              clickBurger={(e) => { setSidebar(!sidebar); }}
             />
             {
               nav.map((el, i) => (
-                <li key={i}>
-                  <SidebarLink
-                    onClick={(e) => { e.stopPropagation(); setSidebar(false); }}
-                    address={`/${el}`}
+                <li key={i} className={`${s.dropdownLink} ${s.link}`} >
+                  <a
+                    className={s['dropdownLink-item']}
                   >
                     {el}
-                  </SidebarLink>
+                  </a>
+                  <ul>
+                    {
+                      [...Array(5)].map((item, k) => (
+                        <li key={k}>
+                          <NavLink
+                            className={({ isActive }) => {
+                              return isActive ? s.activeLink : undefined
+                            }}
+                            to={`/types/${el}/${k + 1}`}
+                            onClick={(e) => { e.stopPropagation(); setSidebar(false) }}>
+                            {`${el}_${k + 1}`}
+                          </NavLink>
+                        </li>
+                      ))
+                    }
+                  </ul>
                 </li>
               ))
             }
+            <li className={s.link} onClick={() => setSidebar(false)}><Link to='pricing'>pricing</Link></li>
+            <li className={s.link} onClick={() => setSidebar(false)}><Link to='company'>company</Link></li>
           </ul>
 
           <div className={`${s['sidebar-subBlock']}`}>
