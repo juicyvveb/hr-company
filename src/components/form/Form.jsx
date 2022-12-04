@@ -10,8 +10,8 @@ export const Form_Request = () => {
       <h2>Help us get to know you better </h2>
       <Form method="post"  action="submission">
         <input type="text" name="name" required id="" placeholder="Full Name" />
-        <input type="text" name="email" required id="" placeholder="Work email" />
-        <input type="text" name="number" required id="" placeholder="Phone Number" />
+        <input type="email" name="email" required id="" placeholder="Work email" />
+        <input type="tel" name="number" required id="" placeholder="Phone Number" />
         <input type="text" name="company" required id="" placeholder="Company" />
         <input type="text" name="company size" id="" placeholder="Company Size" />
         <div className={s.button}>

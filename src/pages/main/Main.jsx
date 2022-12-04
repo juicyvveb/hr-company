@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Info } from '../../components/info/Info';
 import { Options } from '../../components/options/Options';
-import { Slider } from '../../components/slider/Slider.jsx';
+
 import { Yellow } from '../../components/yellow/Yellow';
 import { Support } from '../../components/support/Support';
 import { Mission } from '../../components/mission/Mission';
@@ -10,7 +10,7 @@ import { Popup } from '../../components/popup/Popup';
 import { useInView } from 'react-intersection-observer';
 import { Layout } from "../../components/skeleton/Skeleton";
 import { useLoaderData } from "react-router";
-
+const Slider = React.lazy(() => import('../../components/slider/Slider'));
 
 
 export const Main = () => {
@@ -25,7 +25,7 @@ export const Main = () => {
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(r => setLoading(resp))
+            .then(r => setLoading(resp))
     }, [])
 
     return (
@@ -38,7 +38,11 @@ export const Main = () => {
                     <main>
                         <Info />
                         <Options />
-                        <Slider />
+                        <React.Suspense>
+                            <div>
+                                <Slider />
+                            </div>
+                        </React.Suspense>
                         <Yellow />
                         <Support />
                         <Mission />

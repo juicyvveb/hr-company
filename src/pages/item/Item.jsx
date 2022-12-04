@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from './Item.module.scss';
 import { useLoaderData } from "react-router";
 import axios from 'axios';

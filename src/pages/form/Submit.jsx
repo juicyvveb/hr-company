@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {useActionData, useNavigate, useNavigation} from "react-router";
+import {useActionData, useNavigate} from "react-router";
 import s from './Submit.module.scss';
 
 export const action = async ({ params, request }) => {
@@ -18,10 +18,8 @@ export const action = async ({ params, request }) => {
 export const Submit = () => {
   const { name, email, status }  = useActionData() || { name: false};
   const navigate = useNavigate();
-  const nav = useNavigation()
   useEffect(() => {
     if(!name){
-      console.log('kdkfkd')
       navigate('/')
     }
   }, [name])
@@ -32,7 +30,7 @@ export const Submit = () => {
       <h1>
         <span className={s.name}>
           {`${name},`}
-        </span> форма успешно отпрлена по адресу:
+        </span> форма успешно отправлена по адресу:
         <span className={s.email}>
           {`${email}`}
         </span></h1>
