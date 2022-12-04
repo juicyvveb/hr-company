@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import './style/main.scss';
 import {
+  createHashRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
@@ -26,7 +27,7 @@ const nav_themes = 'products pricing partners'
 
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
     ]
   }
 ], {
-  basename: "/app"
+  // basename: "/app"
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
